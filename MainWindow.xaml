@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Koloskov_MasterFloor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" FontFamily="Segoe UI">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#F4E8D3"></Border>
+        <Border Grid.Row="2" Background="#F4E8D3"></Border>
+        <Image Source="res/Мастер пол.png" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"></Image>
+        <Frame Name="Mainframe" ContentRendered="Mainframe_ContentRendered" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+        <TextBlock Text="Мастер пол" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"></TextBlock>
+        <Button Name="BtnBack" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Назад" Click="BtnBack_Click"></Button>
     </Grid>
 </Window>

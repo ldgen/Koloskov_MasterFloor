@@ -23,6 +23,25 @@ namespace Koloskov_MasterFloor
         public MainWindow()
         {
             InitializeComponent();
+            Mainframe.Navigate(new PartnerPage());
+            Manager.Mainframe = Mainframe;
+        }
+
+        private void Mainframe_ContentRendered(object sender, EventArgs e)
+        {
+            if (Mainframe.CanGoBack)
+            {
+                BtnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnBack.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.Mainframe.GoBack();
         }
     }
 }
