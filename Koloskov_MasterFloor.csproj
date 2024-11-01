@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,62 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Employees.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KoloskovModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Materials.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialsCount.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialsType.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementUnits.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationForm.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerMinCostHistory.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerProduct.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partners.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointSales.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCount.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductType.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierType.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyHistory.cs">
+      <DependentUpon>KoloskovModel.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +127,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KoloskovModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KoloskovModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KoloskovModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KoloskovModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -94,6 +169,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="KoloskovModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KoloskovModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="KoloskovModel.edmx.diagram">
+      <DependentUpon>KoloskovModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +188,21 @@
   <ItemGroup>
     <Resource Include="res\Мастер пол.ico" />
     <Resource Include="res\Мастер пол.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KoloskovModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>KoloskovModel.Context.cs</LastGenOutput>
+      <DependentUpon>KoloskovModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="KoloskovModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KoloskovModel.edmx</DependentUpon>
+      <LastGenOutput>KoloskovModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

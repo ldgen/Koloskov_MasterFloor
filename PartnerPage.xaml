@@ -27,10 +27,20 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="400"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        
+
+                        <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
+
+                        </StackPanel>
+                        <TextBlock Text="{Binding PartnerPhone}"  FontSize="20" Grid.Row="2" Grid.Column="0"/>
+                        <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
+
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -23,6 +23,8 @@ namespace Koloskov_MasterFloor
         public PartnerPage()
         {
             InitializeComponent();
+            var currentPartner = Koloskov_MasterFloorEntities.GetContext().Partners.ToList();
+            PartnerListView.ItemsSource = currentPartner;
         }
     }
 }
