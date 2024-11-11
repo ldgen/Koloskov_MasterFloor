@@ -11,7 +11,8 @@ namespace Koloskov_MasterFloor
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Partners
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -47,28 +48,56 @@ namespace Koloskov_MasterFloor
             }
         }
 
-        public int PartnerDiscount
+        private int PartnerDiscount
         {
             get
             {
-                int total = 0; foreach (PartnerProductSale productSales in this.PartnerProductSale)
+
+                if (Koloskov_MasterFloorEntities.GetContext().PartnerProduct.Where(p => p.Partner == PartnerID).Count() > 0)
                 {
-                    total += productSales.PartnerProductSaleCount * Convert.ToInt32(productSales.Product.ProductCost);
+                    var PartnerProdQuantity = Koloskov_MasterFloorEntities.GetContext().PartnerProduct.Where(p => p.Partner == PartnerID).Sum(p => p.Quantity);
+                    Console.WriteLine(PartnerProdQuantity);
+                    if (PartnerProdQuantity >= 10000 && PartnerProdQuantity < 50000)
+                    {
+                        return 5;
+                    }
+                    else if (PartnerProdQuantity >= 50000 && PartnerProdQuantity < 300000)
+                    {
+                        return 10;
+                    }
+                    else if (PartnerProdQuantity >= 300000)
+                    {
+                        return 15;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                int sale = 0;
-                if (total > 10000 && total < 50000)
+                else
                 {
-                    sale = 5;
+                    return -1;
                 }
-                else if (total > 50000 && total < 300000)
+
+            }
+        }
+
+        public string PartnerDiscountDisplay
+        {
+            get
+            {
+                if (PartnerDiscount == 0)
                 {
-                    sale = 10;
+                    return "Нет скидки";
                 }
-                else if (total > 300000)
+                else if (PartnerDiscount == -1)
                 {
-                    sale = 15;
+                    return "Нет продаж";
                 }
-                return sale;
+                else
+                {
+                    return PartnerDiscount.ToString() + "%";
+                }
             }
         }
 
